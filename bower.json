@@ -1,0 +1,14 @@
+{
+  "name": "jquery-lightajax",
+  "description": "Фасад для ajax-методов get и post, со встроенным прелоадером",
+  "homepage": "https://github.com/DimNS/jQuery.LightAjax",
+  "authors": [
+    "DimNS <atomcms@ya.ru>"
+  ],
+  "keywords": [
+    "ajax",
+    "lightajax",
+    "jquery.lightajax"
+  ],
+  "license": "MIT"
+}
