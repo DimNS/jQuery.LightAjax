@@ -9,6 +9,10 @@
 ```bash
 bower install --save jquery-lightajax
 ```
+или
+```bash
+npm i jquery-lightajax
+```
 
 ## Подключение
 ```html
