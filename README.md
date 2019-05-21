@@ -17,36 +17,38 @@ npm i jquery-lightajax
 <script type="text/javascript" src="dist/jquery.lightajax.min.js"></script>
 ```
 
-## Инициализация
-```javascript
-// Параметры, установленные по умолчанию
-var settingsDefault = {
-    callbackAlert: function (title, message) {
-        alert(message);
+## Параметры, установленные по умолчанию
+```
+{
+    settings: {
+        classColor   : 'lightajax__loader--color',
+        callbackAlert: function (title, message) {
+            alert(message);
+        }
     },
-    settings     : {
-        color: '#fff'
-    },
-    ajax         : {
+    ajax    : {
         crossDomain: true,
         timeout    : 20000,
         dataType   : 'json',
         cache      : false
     }
-};
+}
+```
 
+## Инициализация
+```javascript
 // Создание объекта с настройками по умолчанию
 var lightajax = new LightAjax();
 
 // Дополнительные настройки или переопределение настроек по умолчанию
 var lightajax = new LightAjax({
-    callbackAlert: function (title, message) {
-        swal(title, message, 'error');
+    settings: {
+        classColor   : 'text-white',
+        callbackAlert: function (title, message) {
+            swal(title, message, 'error');
+        }
     },
-    settings     : {
-        color: 'red'
-    },
-    ajax         : {
+    ajax    : {
         beforeSend: function (xhr, settings) {
             if (!/^(HEAD|OPTIONS|TRACE)$/i.test(settings.type)) {
                 xhr.setRequestHeader("X-SESSION-ID", $('meta[name="_session"]').attr('content'));
@@ -54,6 +56,14 @@ var lightajax = new LightAjax({
         }
     }
 });
+```
+
+## Класс для цвета прелоадера
+Определите в своём css-файле класс, указанный в параметре `settings.classColor`, обязательно необходимо указать цвет `color`, например для класса по умолчанию:
+```css
+.lightajax__loader--color {
+    color: #fff;
+}
 ```
 
 ## Использование
