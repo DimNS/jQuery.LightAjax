@@ -1,15 +1,10 @@
 # jQuery.LightAjax
-
 Фасад для ajax-методов get и post, со встроенным прелоадером
 
 ## Требования
 1. jQuery v2+
 
 ## Установка
-```bash
-bower install --save jquery-lightajax
-```
-или
 ```bash
 npm i jquery-lightajax
 ```
