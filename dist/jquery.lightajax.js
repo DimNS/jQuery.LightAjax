@@ -15,11 +15,11 @@
      *
      * @param {object} options Параметры
      *
-     * @version 20.03.2018
-     * @author DimNS <atomcms@ya.ru>
+     * @version 20.05.2019
+     * @author  DimNS <atomcms@ya.ru>
      */
     function LightAjax(options) {
-        if (typeof(options) === 'undefined') {
+        if (typeof (options) === 'undefined') {
             options = {
                 ajax    : {},
                 settings: {}
@@ -35,19 +35,20 @@
         }, options.ajax));
 
         var settings = Object.assign({
-            color: '#fff'
+            classColor   : 'lightajax__loader--color',
+            callbackAlert: function (title, message) {
+                alert(message, title);
+            }
         }, options.settings);
 
-        if (options.hasOwnProperty('callbackAlert')) {
-            LightAjax.prototype._callbackAlert = options.callbackAlert;
-        }
+        LightAjax.prototype._callbackAlert = settings.callbackAlert;
 
         // Создаем html-код
         if ($('#js-lightajax-preloader').length === 0) {
             $('body').append(
                 '<div id="js-lightajax-overlay" class="lightajax__overlay"></div>' +
                 '<div id="js-lightajax-preloader" class="lightajax__preloader">' +
-                '<div class="lightajax__loader" style="color: ' + settings.color + ';"></div>' +
+                '<div class="lightajax__loader ' + settings.classColor + '"></div>' +
                 '</div>'
             );
         }
@@ -68,7 +69,7 @@
      * @param {string} action Действие (show|hide)
      *
      * @version 20.03.2018
-     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
     LightAjax.prototype.preloader = function (action) {
         if (action === 'show') {
@@ -96,7 +97,7 @@
      * @param {function} success   Действие при успешном завершении
      *
      * @version 20.03.2018
-     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
     LightAjax.prototype.get = function (preloader, url, data, success) {
         LightAjax.prototype._query('GET', preloader, url, data, success);
@@ -120,7 +121,7 @@
      * @param {function} success   Действие при успешном завершении
      *
      * @version 20.03.2018
-     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
     LightAjax.prototype.post = function (preloader, url, data, success) {
         LightAjax.prototype._query('POST', preloader, url, data, success);
@@ -145,7 +146,7 @@
      * @param {function} success   Действие при успешном завершении
      *
      * @version 20.03.2018
-     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
     LightAjax.prototype._query = function (type, preloader, url, data, success) {
         if (preloader) {
@@ -167,21 +168,6 @@
         });
     };
 
-    //_callbackAlert
-
-    /**
-     * Вывести ошибку на экран
-     *
-     * @param {string} title   Заголовок сообщения
-     * @param {string} message Текст сообщения
-     *
-     * @version 20.03.2018
-     * @author Дмитрий Щербаков <atomcms@ya.ru>
-     */
-    LightAjax.prototype._callbackAlert = function (title, message) {
-        alert(message, title);
-    };
-
     //         d88888b d8888b. d8888b.  .d88b.  d8888b.
     //         88'     88  `8D 88  `8D .8P  Y8. 88  `8D
     //         88ooooo 88oobY' 88oobY' 88    88 88oobY'
@@ -197,7 +183,7 @@
      * @param {string} status Код ошибки
      *
      * @version 20.03.2018
-     * @author Дмитрий Щербаков <atomcms@ya.ru>
+     * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
     LightAjax.prototype._error = function (status) {
         var message = 'Неизвестная ошибка (' + status + ')';
