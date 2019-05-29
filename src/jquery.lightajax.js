@@ -15,7 +15,7 @@
      *
      * @param {object} options Параметры
      *
-     * @version 20.05.2019
+     * @version 29.05.2019
      * @author  DimNS <atomcms@ya.ru>
      */
     function LightAjax(options) {
@@ -27,7 +27,7 @@
         }
 
         // Настройки по-умолчанию, расширяя их с помощью параметров, которые были переданы
-        $.ajaxSetup(Object.assign({
+        jQuery.ajaxSetup(Object.assign({
             crossDomain: true,
             timeout    : 20000,
             dataType   : 'json',
@@ -44,8 +44,8 @@
         LightAjax.prototype._callbackAlert = settings.callbackAlert;
 
         // Создаем html-код
-        if ($('#js-lightajax-preloader').length === 0) {
-            $('body').append(
+        if (jQuery('#js-lightajax-preloader').length === 0) {
+            jQuery('body').append(
                 '<div id="js-lightajax-overlay" class="lightajax__overlay"></div>' +
                 '<div id="js-lightajax-preloader" class="lightajax__preloader">' +
                 '<div class="lightajax__loader ' + settings.classColor + '"></div>' +
@@ -68,14 +68,14 @@
      *
      * @param {string} action Действие (show|hide)
      *
-     * @version 20.03.2018
+     * @version 29.05.2019
      * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
     LightAjax.prototype.preloader = function (action) {
         if (action === 'show') {
-            $('#js-lightajax-overlay, #js-lightajax-preloader').show();
+            jQuery('#js-lightajax-overlay, #js-lightajax-preloader').show();
         } else if (action === 'hide') {
-            $('#js-lightajax-overlay, #js-lightajax-preloader').hide();
+            jQuery('#js-lightajax-overlay, #js-lightajax-preloader').hide();
         }
     };
 
@@ -145,7 +145,7 @@
      * @param {object}   data      Объект параметров для запроса
      * @param {function} success   Действие при успешном завершении
      *
-     * @version 20.03.2018
+     * @version 29.05.2019
      * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
     LightAjax.prototype._query = function (type, preloader, url, data, success) {
@@ -153,7 +153,7 @@
             LightAjax.prototype.preloader('show');
         }
 
-        $.ajax({
+        jQuery.ajax({
             url    : url,
             method : type,
             data   : data,
