@@ -15,7 +15,7 @@
      *
      * @param {object} options Параметры
      *
-     * @version 29.05.2019
+     * @version 29.07.2019
      * @author  DimNS <atomcms@ya.ru>
      */
     function LightAjax(options) {
@@ -35,7 +35,7 @@
         }, options.ajax));
 
         var settings = Object.assign({
-            classColor   : 'lightajax__loader--color',
+            classColor   : '',
             callbackAlert: function (title, message) {
                 alert(message, title);
             }

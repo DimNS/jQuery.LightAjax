@@ -21,7 +21,7 @@ npm i jquery-lightajax
 ```
 {
     settings: {
-        classColor   : 'lightajax__loader--color',
+        classColor   : '',
         callbackAlert: function (title, message) {
             alert(message);
         }
@@ -34,6 +34,7 @@ npm i jquery-lightajax
     }
 }
 ```
+\* По умолчанию цвет прелоадера белый `#ffffff`, указав свой класс вы можете переопределить цвет прелоадера
 
 ## Инициализация
 ```javascript
@@ -56,14 +57,6 @@ var lightajax = new LightAjax({
         }
     }
 });
-```
-
-## Класс для цвета прелоадера
-Определите в своём css-файле класс, указанный в параметре `settings.classColor`, обязательно необходимо указать цвет `color`, например для класса по умолчанию:
-```css
-.lightajax__loader--color {
-    color: #fff;
-}
 ```
 
 ## Использование
