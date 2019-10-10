@@ -95,12 +95,13 @@
      * @param {string}   url       Адрес запроса
      * @param {object}   data      Объект параметров для запроса
      * @param {function} success   Действие при успешном завершении
+     * @param {object}   options   Переопределение настроек по умолчанию
      *
-     * @version 20.03.2018
+     * @version 10.10.2019
      * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
-    LightAjax.prototype.get = function (preloader, url, data, success) {
-        LightAjax.prototype._query('GET', preloader, url, data, success);
+    LightAjax.prototype.get = function (preloader, url, data, success, options) {
+        LightAjax.prototype._query('GET', preloader, url, data, success, options);
     };
 
     // d8888b.  .d88b.  .d8888. d888888b
@@ -119,12 +120,13 @@
      * @param {string}   url       Адрес запроса
      * @param {object}   data      Объект параметров для запроса
      * @param {function} success   Действие при успешном завершении
+     * @param {object}   options   Переопределение настроек по умолчанию
      *
-     * @version 20.03.2018
+     * @version 10.10.2019
      * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
-    LightAjax.prototype.post = function (preloader, url, data, success) {
-        LightAjax.prototype._query('POST', preloader, url, data, success);
+    LightAjax.prototype.post = function (preloader, url, data, success, options) {
+        LightAjax.prototype._query('POST', preloader, url, data, success, options);
     };
 
     //          .d88b.  db    db d88888b d8888b. db    db
@@ -144,16 +146,21 @@
      * @param {string}   url       Адрес запроса
      * @param {object}   data      Объект параметров для запроса
      * @param {function} success   Действие при успешном завершении
+     * @param {object}   options   Переопределение настроек по умолчанию
      *
-     * @version 29.05.2019
+     * @version 10.10.2019
      * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
-    LightAjax.prototype._query = function (type, preloader, url, data, success) {
+    LightAjax.prototype._query = function (type, preloader, url, data, success, options) {
         if (preloader) {
             LightAjax.prototype.preloader('show');
         }
 
-        jQuery.ajax({
+        if (typeof (options) === 'undefined') {
+            options = {};
+        }
+
+        jQuery.ajax(Object.assign({
             url    : url,
             method : type,
             data   : data,
@@ -165,7 +172,7 @@
 
                 LightAjax.prototype._error(status);
             }
-        });
+        }, options));
     };
 
     //         d88888b d8888b. d8888b.  .d88b.  d8888b.

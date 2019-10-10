@@ -30,6 +30,7 @@ npm i jquery-lightajax
         crossDomain: true,
         timeout    : 20000,
         dataType   : 'json',
+        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         cache      : false
     }
 }
@@ -101,5 +102,20 @@ lightajax.get(false, '/path/to/server', {
 }, function(result) {
     // success code
     console.log(result);
+});
+```
+
+## Переопределение настроек для одного запроса
+Если понадобилось выполнить запрос с параметрами отличными от дефолтных можно передать новые параметры в запрос:
+```javascript
+lightajax.post(true, '/path/to/server', {
+    'param1': 'value1',
+    'param2': 'value2'
+}, function(result) {
+    // success code
+    lightajax.preloader('hide');
+    console.log(result);
+}, {
+    contentType: 'multipart/form-data; charset=utf-8; boundary="boundary"'
 });
 ```
