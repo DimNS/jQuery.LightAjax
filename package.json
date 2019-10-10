@@ -1,7 +1,7 @@
 {
   "name": "jquery-lightajax",
   "description": "Фасад для ajax-методов get и post, со встроенным прелоадером",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "homepage": "https://github.com/DimNS/jQuery.LightAjax",
   "author": "DimNS <dimns@dimns.ru>",
   "keywords": [
