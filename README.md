@@ -11,7 +11,7 @@ npm i jquery-lightajax
 
 ## Подключение
 ```html
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <link rel="stylesheet" href="dist/jquery.lightajax.min.css">
 <script type="text/javascript" src="dist/jquery.lightajax.min.js"></script>
