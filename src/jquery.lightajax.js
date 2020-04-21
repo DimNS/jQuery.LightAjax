@@ -19,7 +19,15 @@
      * @author  DimNS <atomcms@ya.ru>
      */
     function LightAjax(options) {
-        if (typeof (options) === 'undefined') {
+        if (typeof options === 'object' && options !== null) {
+            if (!options.hasOwnProperty('ajax')) {
+                options.ajax = {};
+            }
+
+            if (!options.hasOwnProperty('settings')) {
+                options.settings = {};
+            }
+        } else {
             options = {
                 ajax    : {},
                 settings: {}
@@ -156,7 +164,7 @@
             LightAjax.prototype.preloader('show');
         }
 
-        if (typeof (options) === 'undefined') {
+        if (typeof options !== 'object') {
             options = {};
         }
 
