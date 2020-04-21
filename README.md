@@ -30,7 +30,6 @@ npm i jquery-lightajax
         crossDomain: true,
         timeout    : 20000,
         dataType   : 'json',
-        contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
         cache      : false
     }
 }

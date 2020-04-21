@@ -15,7 +15,7 @@
      *
      * @param {object} options Параметры
      *
-     * @version 29.07.2019
+     * @version 21.04.2020
      * @author  DimNS <atomcms@ya.ru>
      */
     function LightAjax(options) {
@@ -27,12 +27,12 @@
         }
 
         // Настройки по-умолчанию, расширяя их с помощью параметров, которые были переданы
-        jQuery.ajaxSetup(Object.assign({
+        LightAjax.prototype._optionsDefault = Object.assign({
             crossDomain: true,
             timeout    : 20000,
             dataType   : 'json',
             cache      : false
-        }, options.ajax));
+        }, options.ajax);
 
         var settings = Object.assign({
             classColor   : '',
@@ -148,7 +148,7 @@
      * @param {function} success   Действие при успешном завершении
      * @param {object}   options   Переопределение настроек по умолчанию
      *
-     * @version 10.10.2019
+     * @version 21.04.2020
      * @author  Дмитрий Щербаков <atomcms@ya.ru>
      */
     LightAjax.prototype._query = function (type, preloader, url, data, success, options) {
@@ -160,8 +160,7 @@
             options = {};
         }
 
-        jQuery.ajax(Object.assign({
-            url    : url,
+        var settings = Object.assign({}, LightAjax.prototype._optionsDefault, {
             method : type,
             data   : data,
             success: success,
@@ -172,7 +171,9 @@
 
                 LightAjax.prototype._error(status);
             }
-        }, options));
+        }, options);
+
+        jQuery.ajax(url, settings);
     };
 
     //         d88888b d8888b. d8888b.  .d88b.  d8888b.
